@@ -8,6 +8,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'dityalearnsrobot',
+			favicon: '/logo.ico',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Adityamulyaf' }],
 			customCss: ['./src/styles/custom.css'],
 			components: {
