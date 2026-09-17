@@ -76,3 +76,18 @@ h3 {
 .muted {
 	color: var(--sl-color-gray-3);
 }
+
+/* Shrink Starlight's default prev/next pagination cards — the default is a large
+   bordered card (24px title, 16px padding, medium shadow) that reads heavier than
+   the rest of this minimal, content-first layout. */
+.pagination-links a {
+	padding: 0.6rem 0.85rem;
+	box-shadow: none;
+}
+.pagination-links .link-title {
+	font-size: var(--sl-text-base);
+}
+.pagination-links svg {
+	width: 1.1rem;
+	height: 1.1rem;
+}
