@@ -1,0 +1,30 @@
+---
+interface Props {
+	status: string;
+}
+
+const { status } = Astro.props;
+const slug = status.toLowerCase().replace(/\s+/g, '-');
+---
+
+<span class={`status-badge status-${slug}`}>Status: {status}</span>
+
+<style>
+	.status-badge {
+		display: inline-block;
+		margin-top: 0.25rem;
+		padding: 0.15rem 0.6rem;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 999px;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-4);
+		background: var(--sl-color-gray-1);
+	}
+	.status-learning,
+	.status-practicing,
+	.status-active {
+		color: var(--sl-color-accent-high);
+		background: var(--sl-color-accent-low);
+		border-color: var(--sl-color-accent);
+	}
+</style>

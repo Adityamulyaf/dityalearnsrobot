@@ -21,5 +21,5 @@ pnpm-debug.log*
 .DS_Store
 
 CLAUDE.md
-AGENTS.md
+AGENTS
 /docs

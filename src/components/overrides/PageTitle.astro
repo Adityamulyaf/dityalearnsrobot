@@ -1,0 +1,9 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import StatusBadge from '../StatusBadge.astro';
+
+const { status } = Astro.locals.starlightRoute.entry.data as { status?: string };
+---
+
+<Default><slot /></Default>
+{status && <StatusBadge status={status} />}

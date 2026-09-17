@@ -1,0 +1,41 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import LogEntry from '../components/LogEntry.astro';
+
+const logEntries = (await getCollection('docs', ({ id }) => id.startsWith('log/')))
+	.sort((a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0))
+	.slice(0, 3);
+---
+
+<StarlightPage frontmatter={{ title: 'dityalearnsrobot', tableOfContents: false }}>
+	<p class="tagline">
+		A public log of my journey into robotics, autonomous systems, and intelligent machines.
+	</p>
+
+	<hr />
+	<h2>Currently Learning</h2>
+	<ul class="plain-list">
+		<li><a href="/learning/robotics/ros2/">ROS 2</a></li>
+		<li>Control Systems</li>
+		<li><a href="/learning/embedded/esp32/">Embedded Systems</a></li>
+	</ul>
+
+	<hr />
+	<h2>Recent Notes</h2>
+	{
+		logEntries.length === 0 ? (
+			<p class="muted">Nothing logged yet — check back soon.</p>
+		) : (
+			logEntries.map((entry) => <LogEntry entry={entry} />)
+		)
+	}
+
+	<hr />
+	<h2>Current Project</h2>
+	<p>
+		<strong>Autonomous Surface Vehicle</strong><br />
+		RoboBoat
+	</p>
+	<p><a href="/projects/roboboat/">View project →</a></p>
+</StarlightPage>

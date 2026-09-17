@@ -1,0 +1,13 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { getCollection } from 'astro:content';
+import LogEntry from '../../components/LogEntry.astro';
+
+const entries = (await getCollection('docs', ({ id }) => id.startsWith('log/'))).sort(
+	(a, b) => (b.data.date?.valueOf() ?? 0) - (a.data.date?.valueOf() ?? 0)
+);
+---
+
+<StarlightPage frontmatter={{ title: 'Build Log', tableOfContents: false }}>
+	{entries.map((entry) => <LogEntry entry={entry} />)}
+</StarlightPage>

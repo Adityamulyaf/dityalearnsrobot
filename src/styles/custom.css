@@ -1,0 +1,78 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+:root {
+	--sl-font: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+	--sl-content-width: 50rem; /* ~800px */
+	--sl-sidebar-width: 15rem; /* 240px */
+}
+
+/*
+ * Starlight ships a full light palette under `:root[data-theme='light']` (near-black text,
+ * white background, gray-1..gray-7 scale) — that part is already what the spec wants, so it's
+ * left as-is. The only thing overridden here is the accent hue (default blue -> light blue).
+ *
+ * The site is light-only for now (spec: "no dark mode initially"). Rather than leave
+ * `:root[data-theme='dark']` at Starlight's own dark palette, its color tokens are overridden
+ * to exactly mirror the light ones below, so the page stays visually light even when the OS
+ * prefers dark (the ThemeSelect control that would let a visitor pick 'dark' is separately
+ * hidden via a component override). To add real dark mode later: delete this whole dark-theme
+ * block, restyle it with real dark values, and remove the ThemeSelect override.
+ */
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+	--sl-color-white: hsl(224, 10%, 10%);
+	--sl-color-gray-1: hsl(224, 14%, 16%);
+	--sl-color-gray-2: hsl(224, 10%, 23%);
+	--sl-color-gray-3: hsl(224, 7%, 36%);
+	--sl-color-gray-4: hsl(224, 6%, 56%);
+	--sl-color-gray-5: hsl(224, 6%, 77%);
+	--sl-color-gray-6: hsl(224, 20%, 94%);
+	--sl-color-gray-7: hsl(224, 19%, 97%);
+	--sl-color-black: hsl(0, 0%, 100%);
+
+	--sl-color-accent-high: #1d4ed8;
+	--sl-color-accent: #3b82f6;
+	--sl-color-accent-low: #dbeafe;
+
+	--sl-color-text-accent: var(--sl-color-accent);
+	--sl-color-text-invert: var(--sl-color-black);
+	--sl-color-bg-nav: var(--sl-color-gray-7);
+	--sl-color-bg-sidebar: var(--sl-color-bg);
+	--sl-color-bg-inline-code: var(--sl-color-gray-6);
+	--sl-color-bg-accent: var(--sl-color-accent);
+	--sl-color-hairline-light: var(--sl-color-gray-6);
+	--sl-color-hairline-shade: var(--sl-color-gray-6);
+}
+
+h1 {
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+h2,
+h3 {
+	font-weight: 600;
+}
+
+.tagline {
+	color: var(--sl-color-gray-3);
+	font-size: var(--sl-text-lg);
+}
+
+.plain-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.plain-list li {
+	padding: 0.15rem 0;
+}
+
+.muted {
+	color: var(--sl-color-gray-3);
+}

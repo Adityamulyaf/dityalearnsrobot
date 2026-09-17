@@ -1,0 +1,30 @@
+---
+interface Props {
+	subtitle: string;
+	image?: string;
+	imageAlt?: string;
+}
+
+const { subtitle, image, imageAlt } = Astro.props;
+---
+
+<div class="project-header">
+	<p class="subtitle">{subtitle}</p>
+	{image && <img src={image} alt={imageAlt ?? ''} />}
+</div>
+
+<style>
+	.project-header {
+		margin-bottom: 1.5rem;
+	}
+	.subtitle {
+		margin: 0 0 1rem;
+		color: var(--sl-color-gray-4);
+	}
+	img {
+		display: block;
+		width: 100%;
+		border: 1px solid var(--sl-color-hairline);
+		border-radius: 4px;
+	}
+</style>

@@ -1,0 +1,50 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	entry: CollectionEntry<'docs'>;
+}
+
+const { entry } = Astro.props;
+const href = `/${entry.id}/`;
+const formattedDate = entry.data.date
+	? entry.data.date.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })
+	: null;
+---
+
+<a class="log-entry" href={href}>
+	{formattedDate && <span class="date">{formattedDate}</span>}
+	<span class="title">{entry.data.title}</span>
+	{entry.data.category && <span class="category">{entry.data.category}</span>}
+	<span class="arrow">→</span>
+</a>
+
+<style>
+	.log-entry {
+		display: block;
+		padding: 0.5rem 0;
+		text-decoration: none;
+		color: inherit;
+	}
+	.log-entry:hover .title {
+		color: var(--sl-color-accent-high);
+	}
+	.date {
+		display: block;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-4);
+	}
+	.title {
+		display: block;
+		font-weight: 500;
+	}
+	.category {
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-4);
+	}
+	.arrow {
+		display: block;
+		font-size: var(--sl-text-xs);
+		color: var(--sl-color-gray-4);
+	}
+</style>
